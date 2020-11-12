@@ -1,0 +1,6 @@
+#!/bin/bash
+
+PC_PID=$(cat /var/lock/roscar_nano.lock)
+kill -9 $PC_PID
+# rm /var/lock/drive.lock
+exit 0

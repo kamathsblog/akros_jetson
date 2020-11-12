@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source /opt/ros/melodic/setup.bash
+source /home/jetson/ros_ws/devel/setup.bash
+roslaunch roscar drive.launch
+PC_PID=$(ps -ax | grep -e 'drive.launch' | grep -v 'grep' | cut -f 2 -d ' ')
+echo $PC_PID > var/lock/roscar_nano.lock

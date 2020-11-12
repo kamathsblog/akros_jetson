@@ -1,0 +1,14 @@
+Description=ROSCar Nano Process Control Service
+
+[Service]
+Environment="ROS_IP=192.168.0.107"
+
+ExecStart=/bin/bash -c "/home/jetson/ros_ws/src/ros1bot/roscar/utilities/roscar.startup"
+
+ExecReload=/bin/bash -c "/home/jetson/ros_ws/src/ros1bot/roscar/utilities/roscar.shutdown;/home/jetson/ros_ws/src/ros1bot/roscar/utilities/roscar.startup"
+
+Restart=always
+ExecStop=/bin/bash -c "/home/jetson/ros_ws/src/ros1bot/roscar/utilities/roscar.shutdown"
+
+[Install]
+WantedBy=multi-user.target
