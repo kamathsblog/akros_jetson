@@ -1,7 +1,7 @@
 <launch>
 
 <!-- Load config files -->
-<rosparam command="load" file="$(find akros_drive)/config/config_ackermann.yaml" />
+<rosparam command="load" file="$(find akros_drive)/config/config_differential.yaml" />
 <rosparam command="load" file="$(find akros_joystick)/config/config_joystick.yaml" />
 
 <!-- Launch CSI Camera node -->
@@ -24,19 +24,19 @@
 </node>
 
 <!-- Launch I2C Servo Controller (PCA9685) node -->
-<node pkg="i2cpwm_board" type="i2cpwm_board_node" name="i2cpwm_node" output="screen" />
+<!-- node pkg="i2cpwm_board" type="i2cpwm_board_node" name="i2cpwm_node" output="screen" / -->
 
 <!-- Launch AKROS Drive (Differential) node -->
-<!-- node pkg="akros_drive" type="drive_differential.py" name="drive_node" output="screen" -->
-    <!-- remap from="/cmd_vel" to="/joy_node/cmd_vel" / -->
+<node pkg="akros_drive" type="drive_differential.py" name="drive_node" output="screen">
+    <remap from="/cmd_vel" to="/joy_node/cmd_vel" />
     <!-- remap from="/servos_absolute" to="/i2cpwm_node/servos_absolute" / -->
-<!-- /node -->
+</node>
 
 <!-- Launch Arduino ROSserial node -->
 <node pkg="rosserial_python" type="serial_node.py" name="serial_node" output="screen" />
 
 <!-- Load AKROS Odom (Differential) node -->
-<node pkg="akros_odom" type="akros_odom_diff" name="odom_node" output="screen"/>  
+<!-- node pkg="akros_odom" type="akros_odom_diff" name="odom_node" output="screen"/ -->  
 
 <!-- Load Teleop Twist Keyboard controller -->
 <!-- node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_keyboard" output="screen" / -->
