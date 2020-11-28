@@ -49,7 +49,6 @@ class ModeSwitcher():
             rospy.loginfo("[MSW] Mode set to: %d", msg.data)
         self.prev_mode = self.mode;
         
-        
     def run(self):
         #--- Set the control rate
         rate = rospy.Rate(50)
@@ -58,8 +57,8 @@ class ModeSwitcher():
             
             if self.mode == 0:
                 mode0 = self.teleop_msg
-                mode0.linear.x = self.teleop_msg.linear.x*3/4
-                mode0.angular.z = self.teleop_msg.angular.z*3/4
+                mode0.linear.x = self.teleop_msg.linear.x * 0.75
+                mode0.angular.z = self.teleop_msg.angular.z* 0.75
                 self.ros_pub_switched.publish(mode0)
             
             # manual control
