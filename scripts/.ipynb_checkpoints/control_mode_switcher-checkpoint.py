@@ -46,7 +46,10 @@ class ModeSwitcher():
     def set_mode(self, msg):
         self.mode = msg.data
         if (self.mode != self.prev_mode):
-            rospy.loginfo("[MSW] Mode set to: %d", msg.data)
+            if(msg.data != 0):
+                rospy.loginfo("[MSW] Mode set to: %d", msg.data)
+            else:
+                rospy.loginfo("[MSG] Mode set to: Joystick OFF")
         self.prev_mode = self.mode;
         
     def run(self):
