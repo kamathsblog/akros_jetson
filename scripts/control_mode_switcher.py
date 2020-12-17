@@ -1,7 +1,18 @@
 #!/usr/bin/python
 
 """
-Class to switch between different modes. Switches between twist outputs from different publishers using the mode number published by the Joystick node.
+==========
+ROS node to switch between auto, teleop and semi-auto modes
+This code implements the following functionality:
+  > Subscribes to twist messages from teleop node
+  > Subscribes to twist messages from auto node
+  > Subscribes to integer messages from the mode selection node
+  > Switches output twist messages according to selected mode
+  > Publishes output twist message
+by Aditya Kamath
+adityakamath.github.io
+github.com/adityakamath
+==========
 """
 import rospy
 from geometry_msgs.msg import Twist
