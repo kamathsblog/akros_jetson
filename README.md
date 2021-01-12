@@ -1,7 +1,7 @@
 # akros_jetson
 
 ### Description
-ROS launch files and utilities for the AKROS robots based on the Jetson Nano (Jetracer2, Jetbot2). This node also contains the high-level control script, that switches between different driving modes and publishes the Twist message that the robot needs to drive. The following functionalities are implemented
+ROS1 launch files and utilities for the AKROS robots based on the Jetson Nano (Jetracer2, Jetbot2). This node also contains the high-level control script, that switches between different driving modes and publishes the Twist message that the robot needs to drive. The following functionalities are implemented
 * control_mode_switcher.py
   * Subscribes to the mode value from the joystick, the twist message from the akros_joystick package and a twist message from another node providing autonomous functionality
   * Based on the mode, the output twist message is either the teleop twist command from akros_joystick, the twist message from the autonomous node or a combination of both (semi-autonomous: linear velocity via teleop, angular via autonomous node)
