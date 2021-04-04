@@ -48,7 +48,9 @@
 <node pkg="akros_jetson" type="control_mode_switcher.py" name="switch_node" output="screen">
     <remap from="/mode" to="/joy_node/mode"/>
     <remap from="/teleop/cmd_vel" to="/joy_node/cmd_vel"/>
+    <remap from="/teleop/loader" to="/joy_node/loader"/>
     <!-- remap from="/auto/cmd_vel" to="auto_node/cmd_vel"/ -->
+    <!-- remap from="/auto/loader" to="auto_node/loader"/ -->
 </node>
 
 <!-- Launch AKROS Drive (Differential) node -->
